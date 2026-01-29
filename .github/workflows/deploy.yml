@@ -29,7 +29,10 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        # Hier installieren wir Abhängigkeiten UND erzwingen webpack-cli
+        run: |
+          npm install
+          npm install -D webpack-cli
 
       - name: Build
         run: npm run build
@@ -42,6 +45,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Falls der Build fehlschlägt, weil der Ordner nicht gefunden wird,
+          # ändere 'dist' zu 'build' (abhängig von deinem Framework)
           path: './dist'
 
   deploy:
