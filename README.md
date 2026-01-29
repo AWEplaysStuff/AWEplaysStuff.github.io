@@ -32,6 +32,11 @@ This project is configured to automatically deploy to GitHub Pages when you push
    - Name: `GEMINI_API_KEY`
    - Value: Your Gemini API key
    - Click "Add secret"
+   
+   ⚠️ **Security Note:** This application runs entirely in the browser and the API key will be embedded in the client-side JavaScript. Anyone who visits your deployed site can extract the API key from the page source. To mitigate this risk:
+   - Use a restricted API key with usage limits and quotas
+   - Consider implementing a backend proxy service for production use
+   - Regularly monitor your API usage for any unusual activity
 
 2. **Enable GitHub Pages:**
    - Go to Settings → Pages
